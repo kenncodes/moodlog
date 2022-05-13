@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- Google Fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&family=Montserrat+Alternates:ital@1&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- TITLE & ICON -->
+    <title>Calendar</title>
+    <link
+      rel="icon"
+      type="images/dd.jpg"
+      href="http://example.com/myicon.png"
+    />
+    <!-- SENSE-->
+    <script
+      data-ad-client="ca-pub-7758053926321260"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+    <!-- NAVIGATION-->
+    <nav
+    class="navbar navbar-expand-sm sticky-top navbar-light"
+    style="background-color: rgb(232, 249, 255)"
+  >
+    <a class="navbar-brand" href="#">
+     
+      Sunshine Self
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="moodlog.html">Mood Log<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="calendar.html"> Calendar</a>
+          </li>
+      </ul>
+  </div>
+  </nav>
+    <style>
+      body {
+        font-family: "Concert One", cursive;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 style="font-size: large; padding-top: 10px; color: rgb(72, 184, 174)">
+      Month at a Glance Calendar
+    </h1>
+    <div id="monthTitle">
+      <h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-arrow-left-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
+          />
+        </svg>
+        <span id="month"></span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-arrow-right-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+          />
+        </svg>
+      </h2>
+    </div>
+    <small
+      style="
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 15px;
+        font-size: 15px;
+        text-align: center;
+      "
+      class="form-text text-muted"
+    >
+      This calendar is whatever you want it to be. Need Ideas? A list of
+      important dates, holidays, appointments, bills, things to do, a mini
+      diary, mood log, food log, anything at all.</small
+    >
+
+    <div id="main">
+      <ol id="itemsList"></ol>
+    </div>
+
+    <script>
+              var months = [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December",
+            ];
+              
+           
+              var mcInit = localStorage.getItem("mcInit");
+              var daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+              var d = new Date();
+              var month = d.getMonth();
+              var year = d.getFullYear();
+              document.getElementById("month").innerHTML = months[month] + " " + year;
+           
+              function initItems() {
+                  for (var i = 0; i < 12; i++) {
+                      for (var j = 1; j <= daysInMonths[i]; j++) {
+                          localStorage.setItem("mcEvent_" + i + "_" + j + "_" + year, "");
+                      }
+                  }
+                  localStorage.setItem("mcInit", 1);
+                  mcInit = localStorage.getItem("mcInit");
+              }
+
+              function populateList() {
+                  if (mcInit == 1) {
+                      var curMonth = month;
+                      var list = document.getElementById("itemsList");
+                      list.innerHTML = "";
+                      for (var i = 1; i <= daysInMonths[month]; i++) {
+                          var diary = "" + localStorage.getItem("mcEvent_" + month + "_" + i + "_" + year);
+                         
+                         if(diary != "null"){
+                            if (i % 2 == 0) {
+                              list.innerHTML += '<li style="border-bottom: 2px solid purple;"><input onchange="updateItem(this.id)" type="text" style="border:none; border-bottom: palegreen;" class="myForm" value="' + diary + '" id="item' + i + '"></li>';
+
+                          } else {
+                              list.innerHTML += '<li style="border-bottom: 2px solid teal;"><input onchange="updateItem(this.id)" type="text" style="border:none; border-bottom: palegreen;" class="myForm" value="' + diary + '" id="item' + i + '"></li>';
+
+                          }
+                         }else{
+                            if (i % 2 == 0) {
+                              list.innerHTML += '<li style="border-bottom: 2px solid purple;"><input onchange="updateItem(this.id)" type="text" style="border:none; border-bottom: palegreen;" class="myForm" value="' + '" id="item' + i + '"></li>';
+
+                          } else {
+                              list.innerHTML += '<li style="border-bottom: 2px solid teal;"><input onchange="updateItem(this.id)" type="text" style="border:none; border-bottom: palegreen;" class="myForm" value="' + '" id="item' + i + '"></li>';
+
+                          }
+                         }
+                         
+                         
+                         //  console.log("mcEvent_" + month + "_" + i + "_" + year +  " is " + localStorage.getItem("mcEvent_" + month + "_" + i + "_" + year ));
+                       
+
+                      }
+
+                  } else {
+                      initItems();
+                      populateList();
+                  }
+              }
+
+              populateList();
+
+              function updateItem(id) {
+                  var num = id.substring(4);
+                  console.log(num);
+                  localStorage.setItem("mcEvent_" + month + "_" + num + "_" + year, document.getElementById(id).value);
+                  console.log(localStorage.getItem("mcEvent_" + month + "_" + num + "_" + year));
+              }
+    </script>
+
+    <style>
+        nav{
+            text-align:left;
+            font-weight: 100;
+        }
+      #monthTitle {
+        text-align: center;
+        justify-self: center;
+        justify-content: center;
+        justify-items: center;
+      }
+      li::marker {
+        vertical-align: middle;
+        text-align: center;
+        justify-content: center;
+        justify-self: center;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      input {
+        font-size: 30px;
+      }
+
+      #main {
+        justify-content: center;
+        justify-self: center;
+        justify-items: center;
+        text-align: center;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+
+      #itemsList {
+        text-align: left;
+      }
+
+      .myForm {
+        width: 100%;
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+    </style>
+  </body>
+</html>

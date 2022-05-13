@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="icon" type="image/gif" href="https://i.gifer.com/VnLM.gif">
+    <!-- Google Fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&family=Montserrat+Alternates:ital@1&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="moodlog.css">
+    <!-- TITLE & ICON -->
+    <title>Mood Log</title>
+
+    <!-- NAVIGATION-->
+
+    <script>
+      var emojis = [0x1f354, 0x1f423];
+      //populate resolutions
+      /* var resList = document.getElementById("resolutions");
+          
+             for (var i = 0; i < resolutions.length; i++) {
+             resList.innerHTML += '<li><div style="display:flex;  justify-content: space-between;">' + resolutions[i] + String.fromCodePoint(0x1F354) + '<img src="../public/images/plus.png" width=40 height=40 /></div></li>';
+         } */
+
+      //populate Menu Nav
+      var bottomNav = document.getElementById("bottomNav");
+      var menuItems = ["Goals", "Habits", "Actions", "Calendar", "Blog"];
+      var menuIcons = [
+        "star.png",
+        "flowerpot-min.png",
+        "heart-min.png",
+        "calendar.png",
+        "orange.png",
+      ];
+      var menuList = document.getElementsByClassName("nav-link");
+      for (var i = 0; i < menuList.length; i++) {
+        menuList[i].innerHTML =
+          '<img src="/images/' + menuIcons[i] + '" width=20px /><br>';
+      }
+      //switch Menu Pill
+      $("a").click(function () {
+        $("a").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      //Add resolution modal
+
+      //Populate table
+    </script>
+
+  </head>
+
+  <body onload="isMoodSet()">
+    <nav
+    class="navbar navbar-expand-sm sticky-top navbar-light"
+    style="background-color: rgb(232, 249, 255)"
+  >
+    <a class="navbar-brand" href="#">
+     
+      Sunshine Self
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link active" href="moodlog.html">Mood Log<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="calendar.html"> Calendar</a>
+          </li>
+      </ul>
+  </div>
+  </nav>
+    <script>
+      function isMoodSet() {
+        if (localStorage.getItem("mlInit")) {
+          var date = new Date();
+          var m = date.getMonth();
+          var d = date.getDate();
+          var y = date.getFullYear();
+          console.log("im ");
+          console.log("ml_" + m + "_" + d + "_" + y + "_mood");
+          if (
+            localStorage.getItem("ml_" + m + "_" + d + "_" + y + "_mood") == -1
+          ) {
+            $("#moodModal").modal("show");
+            selectedDate = d;
+            console.log("not set");
+          }
+        } else {
+          initMoodsToEmpty();
+        }
+      }
+    </script>
+
+    <!-- TITLE-->
+    <div class="center">
+      <p id="monthName"></p>
+    </div>
+
+    <!-- MAIN PAGE - CALENDAR-->
+    <div id="main">
+      <div class="moods">
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+      </div>
+      <div class="moods">
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+      </div>
+      <div class="moods">
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+      </div>
+      <div class="moods">
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+      </div>
+      <div class="moods">
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+      </div>
+      <div class="moods">
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+        <div class="mood"></div>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <ul class="list-unstyled d-flex flex-wrap" id="moodLegend"></ul>
+
+    <!-- Button trigger modal -->
+    <!--
+
+ <button type="button" class="btn btn-primary" onclick="initMoodsToEmpty()">
+        RESET
+    </button>
+
+    <button type="button" class="btn btn-primary" onclick="setml()">
+        set ml to 0
+    </button>
+    <button type="button" class="btn btn-primary" onclick="deleteItems()">
+       delete localstorag efor moods
+    </button>
+-->
+    <script>
+      function setml() {
+        localStorage.setItem("mlInit", 0);
+      }
+    </script>
+    <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+    </button> -->
+
+    <!-- YOU FELT Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Date</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="exampleBody" class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              onclick="setPaddingNormal()"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-dismiss="modal"
+              data-target="#moodModal"
+            >
+              Change Mood
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOOD MODAL
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moodModal">
+        Change Todays Mood
+    </button>-->
+
+    <div
+      class="modal fade"
+      id="moodModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="moodModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="moodModalLabel">How are you today?</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="moodBody" class="modal-body">
+            <div id="moodPromptLegend"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //CREATE MOOD VARIABLES
+      var moodEnum = [0, 1, 2, 3, 4, 5, 6, 7];
+      //var color = ["red", "orange", "yellow)", "lightgreen", "lightblue", "purple", "pink", "lightgray"];
+      /*var color = ["coral", "orange", "rgb(255, 254, 168)", "lightgreen", "lightblue", "purple", "pink", "gray"];
+            var mood = ["angry", "okay", "happy", "amazing", "sad", "anxious", "annnoyed", "sick/tired"];
+            var squares = ["red.jpg", "orange.png", "yellow.jpg", "green.jpg", "blue.jpg", "black.webp", "pink.jpg", "gray.jpg"];*/
+
+      var color = [
+        "#E26C5F",
+        "orange",
+        "#FEE500",
+        "#95EC6E",
+        "#93D2E9",
+        "pink",
+        "rgb(209, 209, 212);",
+      ];
+      var mood = [
+        "angry",
+        "okay",
+        "happy",
+        "amazing",
+        "sad",
+        "anxious/annnoyed",
+        "sick/tired",
+      ];
+      var squares = [
+        "coral.jpg",
+        "orange.png",
+        "yellow.jpg",
+        "green.jpg",
+        "blue.jpg",
+        "pink.jpg",
+        "gray.jpg",
+      ];
+      var list = document.getElementById("moodLegend");
+      var listPrompt = document.getElementById("moodPromptLegend");
+
+      //CREATE MONTH VARIABLES
+      var monthsLetter = [
+        "J",
+        "F",
+        "M",
+        "A",
+        "M",
+        "J",
+        "J",
+        "A",
+        "S",
+        "O",
+        "N",
+        "D",
+      ];
+      var daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      var months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      var monthsEmoji= [
+        "🎉",
+        "🌼",
+        "🍀",
+        "🌸",
+        "🌻",
+        "🌷",
+        "🌈",
+        "💮",
+        "🎉",
+        "🎉",
+        "🎉",
+        "🎉",
+      ];
+
+      // CREATE MOOD PROMPT
+      for (var i = 0; i <= mood.length; i++) {
+        if (mood.length == i) {
+          var listItem = document.createElement("div");
+          listItem.setAttribute("id", "moodChoice" + i);
+          listItem.setAttribute("class", "moodChoice");
+          listItem.setAttribute("onclick", "updateMood(this.id)");
+          listItem.setAttribute("data-dismiss", "modal");
+          listItem.setAttribute(
+            "style",
+            'background-image:url("images/blackwebp"'
+          );
+          listItem.innerHTML = "I DON'T KNOW";
+          listPrompt.append(listItem);
+        } else {
+          var listItem = document.createElement("div");
+          listItem.setAttribute("id", "moodChoice" + i);
+          listItem.setAttribute("class", "moodChoice");
+          listItem.setAttribute("onclick", "updateMood(this.id)");
+          listItem.setAttribute("data-dismiss", "modal");
+          listItem.setAttribute(
+            "style",
+            'background-image:url("images/' + squares[i]
+          );
+          listItem.innerHTML = mood[i];
+          listPrompt.append(listItem);
+        }
+      }
+
+      // CREATE LEGEND
+      for (var i = 0; i < mood.length; i++) {
+        var listItem = document.createElement("li");
+        listItem.setAttribute(
+          "style",
+          'background-image:url("images/' + squares[i]
+        );
+        listItem.innerHTML = mood[i];
+        list.append(listItem);
+      }
+
+      // GET DATE
+      var d = new Date();
+      var year = d.getFullYear();
+      var month = d.getMonth();
+      var date = d.getDate();
+      var day = d.getDay();
+
+      //SET TITLE
+      var monthName = document.getElementById("monthName");
+      monthName.innerHTML = "" + months[month] + ' 🌻';
+
+      //UPDATE OR SET THE MOODS
+      function setMoods() {
+        //GET CURRENT DAY OF THE WEEK
+        var n = new Date();
+        n.getFullYear();
+        n.setMonth(month);
+        n.setDate(1);
+        var x = document.getElementsByClassName("mood");
+        var counter = n.getDay();
+        for (var i = 1; i <= daysInMonths[month]; i++) {
+          //POPULATE MOODS
+          x[counter].innerHTML = '<div id="day' + i + '">' + i + "</div> ";
+          if (date == i) {
+            //CIRCLE CURRENT DATE
+            var item = document.getElementById("day" + i);
+            var curMood = localStorage.getItem(
+              "ml_" + month + "_" + i + "_" + year + "_mood"
+            );
+            item.setAttribute(
+              "style",
+              "border:2px solid black; border-radius:50px; background-color:" +
+                color[curMood]
+            );
+            item.setAttribute("onclick", "setMoodforDay(this.id)");
+
+            if (d.getDate() >= i) {
+              item.setAttribute(
+                "style",
+                "border:2px solid black; border-radius:50px; cursor:pointer; background-color:" +
+                  color[curMood]
+              );
+              var getMoodEnum = localStorage.getItem(
+                "ml_" + month + "_" + i + "_" + year + "_mood"
+              );
+              if (getMoodEnum == -1 || getMoodEnum == 7) {
+                item.setAttribute("data-toggle", "modal");
+                item.setAttribute("data-target", "#moodModal");
+              } else {
+                item.setAttribute("data-toggle", "modal");
+                item.setAttribute("data-target", "#exampleModal");
+              }
+            }
+          } else {
+            //COLOR MOODS
+            var item = document.getElementById("day" + i);
+            var curMood = localStorage.getItem(
+              "ml_" + month + "_" + i + "_" + year + "_mood"
+            );
+            //console.log("l" + curMood);
+            item.setAttribute("cursor", "pointer");
+            item.setAttribute(
+              "style",
+              "border-radius:50px;background-color:" + color[curMood]
+            );
+            item.setAttribute("onclick", "setMoodforDay(this.id)");
+            if (d.getDate() >= i) {
+              item.setAttribute("data-toggle", "modal");
+              item.setAttribute("data-target", "#exampleModal");
+            }
+          }
+
+          counter++;
+        }
+      }
+      /*    x[counter].style.backgroundColor ="white";
+                   x[counter].style.border = "2px solid green"#fbfbeb;
+                   x[counter].style.borderRadius = "50px"; */
+
+      setMoods();
+      //  console.log("1. all set");
+
+      var selectedDate = -1;
+
+      //SHOW MODAL AND UPDATE
+      function setMoodforDay(dayId) {
+        var theDate = document.getElementById("exampleModalLabel");
+        var idNum = dayId.substring(3);
+        console.log("idnum: " + idNum + "date: " + date);
+        if (idNum > date) {
+          //
+        } else {
+          selectedDate = parseInt(idNum);
+          theDate.innerHTML = "" + months[month] + " " + idNum + ", " + year;
+          var theMood = document.getElementById("exampleBody");
+          var myMood = localStorage.getItem(
+            "ml_" + month + "_" + idNum + "_" + year + "_mood"
+          );
+
+          if (mood[myMood] == null) {
+            theMood.innerHTML = "Add a mood for this day";
+          } else {
+            theMood.innerHTML = "You felt " + mood[myMood];
+            setMoods();
+          }
+        }
+      }
+
+      function updateMood(myId) {
+        var num = myId.substring(myId.length - 1);
+        console.log(num);
+        localStorage.setItem(
+          "ml_" + month + "_" + selectedDate + "_" + year + "_mood",
+          num
+        );
+        setMoods();
+        setPaddingNormal();
+      }
+
+      // localStorage.setItem("ml_" + month + "_" + date + "_" + year + "_mood", -1);
+      // localStorage.setItem("ml_" + month + "_" + date + "_" + year + "_mood", -1);
+
+      //SET ALL MOODS FOR YEAR TO -1
+      function initMoodsToEmpty() {
+        for (var i = 0; i < 12; i++) {
+          for (var j = 1; j <= daysInMonths[i]; j++) {
+            //  console.log(i + " " + j);
+            localStorage.setItem(
+              "ml_" + i + "_" + j + "_" + year + "_mood",
+              -1
+            );
+            setMoods();
+          }
+        }
+        localStorage.setItem("mlInit", 0);
+      }
+
+      //HELPER FUNCTION - RANDOM
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
+
+      //SET ALL TO MOODS TO RANDOM
+      function initMoodsToRandom() {
+        for (var i = 0; i < 31; i++) {
+          //   console.log(i);
+          var moodE = getRandomInt(7);
+          localStorage.setItem("ml_0_" + i + "_" + year + "_mood", "" + moodE);
+          // console.log("ml_0_" + i + "_" + year + "_mood is" + moodE);
+        }
+      }
+      localStorage.setItem("pizza", "plain");
+      //DELETE SOME ITEMS
+      function deleteItems() {
+        for (var i = 0; i <= 12; i++) {
+          for (var j = 0; j <= daysInMonths[i]; j++) {
+            console.log("ml_" + i + "_" + j + "_" + year + "_mood");
+            localStorage.removeItem("ml_" + i + "_" + j + "_" + year + "_mood");
+          }
+        }
+        localStorage.removeItem("mlInit");
+      }
+
+      //SET MOOD FOR SELECTED DATE
+
+      function setCurrents() {
+        var d = new Date();
+        localStorage.setItem("currentYear", d.getFullYear());
+        localStorage.setItem("currentDate", d.getDate());
+        localStorage.setItem("currentMonth", d.getMonth());
+        localStorage.setItem("currentDate", d.getDay());
+      }
+
+      function setPaddingNormal() {
+        document.body.style = "padding:0px;";
+      }
+    </script>
+
+    <!-- FIREBASE SCRIPT -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script>
+    
+    </script>
+
+    <style>
+      h1,
+      h3 {
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .moods {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .mood {
+        padding: 10px;
+        width: 80px;
+      }
+
+      #moodLegend > li {
+        margin: 0;
+        padding: 3px 30px 3px 25px;
+        list-style: none;
+
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 20px;
+      }
+
+      #moodLegend {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 50px;
+        margin-right: 50px;
+        border: 2px solid salmon;
+      }
+
+      #legend {
+        display: block;
+      }
+
+      .center {
+        text-align: center;
+        margin-top: 20px;
+        padding-bottom: 0px;
+        font-size: xx-large;
+        /*background-color: lavender;
+*/
+        justify-content: center;
+        justify-self: center;
+        justify-items: center;
+        text-align: center;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-bottom: 0px;
+      }
+
+      #monthName {
+        text-align: center;
+        justify-self: center;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+      }
+
+      .container {
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      #containers {
+        height: 100px;
+        width: 20px;
+        position: relative;
+      }
+
+      #image {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      #text {
+        z-index: 100;
+        position: absolute;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-weight: bold;
+        left: 25px;
+        top: 15px;
+      }
+
+      #rowStar {
+        vertical-align: middle;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      #aStar {
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-bottom: 2%;
+
+        min-width: 40px;
+        min-height: 50px;
+      }
+
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow-y: hidden;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .container {
+        text-align: center;
+        justify-content: center;
+        justify-self: center;
+        justify-items: center;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .col-sm {
+        padding-right: 0px;
+        padding-left: 0px;
+      }
+
+      .moodChoice {
+        width: 200px;
+        padding: 20px;
+        border: black;
+      }
+
+      .moodChoice:hover {
+        opacity: 80%;
+        cursor: pointer;
+        border: 2px solid black;
+      }
+
+      #moodPromptLegend {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </body>
+</html>

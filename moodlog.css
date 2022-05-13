@@ -1,0 +1,37 @@
+body {
+    font-family: "Poppins";
+    overflow-x: hidden;
+  }
+
+  #bottomNav {
+    background-color: white;
+  }
+
+  h2 {
+  }
+
+  #ol {
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .btn {
+    padding: 0.5rem;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin: 8px;
+  }
+
+  #res {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    background-color: orange;
+  }
+  body {
+    font-family: "Concert One", cursive;
+    font-weight: 400;
+  }
